@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { BreakdownProvider } from "./BreakdownContext";
 
 //Importing Components
-import FormInput from "./components/Form";
 import BreakdownList from "./components/BreakdownList";
-import { Breakdown } from "./components/Breakdown";
+import FormInput from "./components/Form";
 
 import "./App.css";
-import { Radio, Button } from "antd";
+import { Radio, Button, } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
+
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -49,8 +49,7 @@ function App() {
               </div>
             </div>
           </div>
-          <Breakdown />
-          {/* <div className="input-container">
+          <div className="input-container">
             <div className="input-header">
               <h3>Name</h3>
               <h3 className="rate-header">Rate</h3>
@@ -62,7 +61,7 @@ function App() {
                 Add New Breakdown
               </Button>
             </div>
-          </div> */}
+          </div>
           <BreakdownProvider>
 
           </BreakdownProvider>

@@ -1,15 +1,15 @@
+import React from "react";
+
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input } from "antd";
 
 const FormInput = ({ breakdown, inputText, setInputText, setBreakdown }) => {
   const inputTextHandler = (e) => {
-    console.log(e.target.value);
     setInputText(e.target.value);
   };
 
   const addNewBreakdown = (e) => {
-    console.log("hey");
     e.preventDefault();
     setBreakdown([
       ...breakdown,

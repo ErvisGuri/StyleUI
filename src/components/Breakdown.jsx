@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import FormInput from "./components/Form";
 import { Button } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
 
-export const Breakdown = (props) => {
+//Importing Components
+import FormInput from "./components/Form";
+
+const Breakdown = (props) => {
   const [inputText, setInputText] = useState("");
   const [breakdown, setBreakdown] = useState([]);
 
@@ -31,3 +33,5 @@ export const Breakdown = (props) => {
     </div>
   );
 };
+
+export default Breakdown;
