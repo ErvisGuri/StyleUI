@@ -8,8 +8,16 @@ import Breakdown from "./Breakdown";
 import BreakdownContext from "../BreakdownContext";
 
 const BreakdownList = () => {
-  const value = useContext(BreakdownContext);
+  const { input, setInput } = useContext(BreakdownContext);
+  const [breakdowns, setBreakdown] = useContext(BreakdownContext);
 
+  const addNewBreakdown = (e) => {
+    e.preventDefault();
+    setBreakdown([
+      ...breakdowns,
+      { text: breakdowns, completed: false, id: Math.random() * 1000 },
+    ]);
+  };
   return (
     <div className="input1-container">
       <div className="input-header">
@@ -22,6 +30,7 @@ const BreakdownList = () => {
           className="add-button"
           type="primary"
           icon={<CheckOutlined className="add-icon" />}
+          onClick={addNewBreakdown}
         >
           Add New Breakdown
         </Button>

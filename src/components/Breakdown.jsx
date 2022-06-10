@@ -4,22 +4,17 @@ import React, { useState, useContext } from "react";
 import FormInput from "./Form";
 import BreakdownContext from "../BreakdownContext";
 
-const Breakdown = (props) => {
-  const [inputText, setInputText] = useState("");
-  const [breakdown, setBreakdown] = useState([]);
-
+const Breakdown = () => {
   const { input, setInput } = useContext(BreakdownContext);
-  console.log(input);
-  setInput("hey");
-  console.log(input);
+  const [breakdowns, setBreakdown] = useContext(BreakdownContext);
 
   return (
     <div className="input-container">
       <FormInput
-        inputText={inputText}
-        breakdown={breakdown}
+        input={input}
+        breakdowns={breakdowns}
         setBreakdown={setBreakdown}
-        setInputText={setInputText}
+        setInput={setInput}
       />
     </div>
   );

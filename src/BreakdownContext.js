@@ -3,10 +3,12 @@ import React, { createContext, useContext, useState } from 'react';
 const BreakdownContext = createContext();
 
 export function BreakdownProvider({ children }) {
-    const [input, setInput] = useState('Hello')
+    const [input, setInput] = useState('')
+    const [breakdowns, setBreakdown] = useState([]);
+
 
     return (
-        <BreakdownContext.Provider value={{ input, setInput }} >
+        <BreakdownContext.Provider value={[input, setInput, breakdowns, setBreakdown]} >
             {children}
         </BreakdownContext.Provider >
     );
