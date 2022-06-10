@@ -1,13 +1,15 @@
-import React, { useState, createContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-export const BreakdownContext = React.createContext()
+const BreakdownContext = createContext();
 
-export const BreakdownProvider = (props) => {
-    const [breakdown, setBreakdown] = useState([]);
+export function BreakdownProvider({ children }) {
+    const [input, setInput] = useState('Hello')
 
     return (
-        <BreakdownContext.Provider value={'Hey this works'} >
-            {props.children}
-        </BreakdownContext.Provider>
+        <BreakdownContext.Provider value={{ input, setInput }} >
+            {children}
+        </BreakdownContext.Provider >
     );
 }
+
+export default BreakdownContext;

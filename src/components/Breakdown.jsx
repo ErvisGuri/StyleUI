@@ -1,35 +1,26 @@
-import React, { useState } from "react";
-import { Button } from "antd";
-import { CheckOutlined } from "@ant-design/icons";
+import React, { useState, useContext } from "react";
 
 //Importing Components
-import FormInput from "./components/Form";
+import FormInput from "./Form";
+import BreakdownContext from "../BreakdownContext";
 
 const Breakdown = (props) => {
   const [inputText, setInputText] = useState("");
   const [breakdown, setBreakdown] = useState([]);
 
+  const { input, setInput } = useContext(BreakdownContext);
+  console.log(input);
+  setInput("hey");
+  console.log(input);
+
   return (
     <div className="input-container">
-      <div className="input-header">
-        <h3>Name</h3>
-        <h3 className="rate-header">Rate</h3>
-      </div>
       <FormInput
         inputText={inputText}
         breakdown={breakdown}
         setBreakdown={setBreakdown}
         setInputText={setInputText}
       />
-      <div>
-        <Button
-          className="add-button"
-          type="primary"
-          icon={<CheckOutlined className="add-icon" />}
-        >
-          Add New Breakdown
-        </Button>
-      </div>
     </div>
   );
 };
