@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { Button } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
@@ -6,16 +6,18 @@ import { CheckOutlined } from "@ant-design/icons";
 //Importing Components
 import Breakdown from "./Breakdown";
 import BreakdownContext from "../BreakdownContext";
+import FormInput from "./Form";
 
 const BreakdownList = () => {
-  const { input, setInput } = useContext(BreakdownContext);
-  const [breakdowns, setBreakdown] = useContext(BreakdownContext);
+  const { inputValue, breakdownsValue } = React.useContext(BreakdownContext);
+  const [input] = inputValue;
+  const [breakdowns, setBreakdowns] = breakdownsValue;
 
   const addNewBreakdown = (e) => {
     e.preventDefault();
-    setBreakdown([
+    setBreakdowns([
       ...breakdowns,
-      { text: breakdowns, completed: false, id: Math.random() * 1000 },
+      { text: input, completed: false, id: Math.random() * 1000 },
     ]);
   };
   return (
@@ -24,7 +26,11 @@ const BreakdownList = () => {
         <h3>Name</h3>
         <h3 className="rate-header">Rate</h3>
       </div>
-      <Breakdown />
+      {breakdowns.map((breakdown, i) => {
+        return <Breakdown key={i} breakdown={breakdown} />;
+      })}
+
+      <FormInput breakdown={{ text: "", rate: null }}></FormInput>
       <div>
         <Button
           className="add-button"

@@ -1,17 +1,21 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 const BreakdownContext = createContext();
 
 export function BreakdownProvider({ children }) {
-    const [input, setInput] = useState('')
-    const [breakdowns, setBreakdown] = useState([]);
+  const [input, setInput] = useState("");
+  const [breakdowns, setBreakdowns] = useState([]);
 
-
-    return (
-        <BreakdownContext.Provider value={[input, setInput, breakdowns, setBreakdown]} >
-            {children}
-        </BreakdownContext.Provider >
-    );
+  return (
+    <BreakdownContext.Provider
+      value={{
+        inputValue: [input, setInput],
+        breakdownsValue: [breakdowns, setBreakdowns],
+      }}
+    >
+      {children}
+    </BreakdownContext.Provider>
+  );
 }
 
 export default BreakdownContext;
