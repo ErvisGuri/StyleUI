@@ -33,7 +33,7 @@ const Breakdown = ({ breakdown }) => {
           value={breakdown.rate}
           className="input-ant"
           type="number"
-          placeholder="25"
+          placeholder="add rate"
           readOnly
         />
         <div className="background-icon">

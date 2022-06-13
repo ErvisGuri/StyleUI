@@ -32,14 +32,11 @@ const FormInput = ({ breakdown }) => {
           onChange={rateInputHandler}
           className="input-ant"
           type="number"
-          placeholder="25"
+          placeholder="add rate"
+          checked="checked"
         />
         <div className="background-icon">
-          <FontAwesomeIcon
-            className="trash"
-            icon={faTrash}
-            // onClick={deleteHandler}
-          />
+          <FontAwesomeIcon className="trash" icon={faTrash} />
         </div>
       </div>
     </>

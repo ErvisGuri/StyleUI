@@ -49,7 +49,6 @@ const BreakdownList = () => {
         {breakdowns.map((breakdown, i) => {
           return <Breakdown key={breakdown.id} breakdown={breakdown} />;
         })}
-
         <FormInput breakdown={{ text: "", rate: null }}></FormInput>
         <div>
           <Button
@@ -64,7 +63,7 @@ const BreakdownList = () => {
       </div>
       <div
         className="apply-button"
-        style={{ display: "flex", marginTop: "330px", marginRight: "1px" }}
+        style={{ display: "flex", marginTop: "450px", marginRight: "5px" }}
       >
         <Button
           onClick={applyChangesHandler}
