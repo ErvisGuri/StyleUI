@@ -11,6 +11,8 @@ import { Radio } from "antd";
 
 function App() {
   const [selectedService, setSelectService] = useState(0);
+  const [selectedText, setSelectText] = useState('');
+
 
   const radioServices1 = [
     { serviceText: 'service-nr-1', id: 0, serviceName: 'Sidewalk Shed' },
@@ -41,6 +43,11 @@ function App() {
     setSelectService(e.target.value)
   }
 
+  const handleChange = e => {
+    setSelectText(e.target.value);
+    onchange(e);
+  }
+
 
 
   return (
@@ -56,7 +63,7 @@ function App() {
               <div className="services-container" style={{ marginTop: "0", display: "flex", gap: "300px" }}>
                 <div className="service1">
                   {radioServices1.map((service, i) => {
-                    return <Radio value={service.id} onChange={onChangeValue} checked={selectedService === service.id} key={i} > {` ${service.serviceName}`}</Radio>
+                    return <Radio value={service.id} onChange={onChangeValue} checked={selectedService === service.id} key={i}>{` ${service.serviceName}`}</Radio>
                   })}
                 </div>
                 <div className="service2">
@@ -66,7 +73,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <BreakdownList />
+            <BreakdownList handleChange={handleChange} />
           </div>
         </div>
       </BreakdownProvider >
