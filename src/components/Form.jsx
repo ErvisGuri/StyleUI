@@ -5,7 +5,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input } from "antd";
 
-const FormInput = (handleChange) => {
+const FormInput = () => {
   const { rateValue, holderValue } = React.useContext(BreakdownContext);
   const [rate, setRate] = rateValue;
   const [serviceText, setServiceText] = holderValue;
@@ -17,14 +17,13 @@ const FormInput = (handleChange) => {
   const rateInputHandler = (e) => {
     setRate(e.target.value);
   };
-  console.log(handleChange);
 
   return (
     <>
       <div className="input">
         <Input
           defaultValue={serviceText}
-          onChange={handleChange}
+          onChange={serviceTextHandler}
           className="input-ant"
           type="text"
           placeholder=" test shed 1"
