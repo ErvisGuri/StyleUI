@@ -98,7 +98,7 @@ h3 {
 }
 
 ::placeholder {
-  color: rgba(0,0,0,0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .button {
@@ -144,7 +144,7 @@ h3 {
   height: 30px;
   margin-top: 15px;
   color: white;
-  background-color: rgba(13, 72, 161, 0.85); 
+  background-color: rgba(13, 72, 161, 0.85);
   border: none;
   border-radius: 0.3rem;
   position: absolute;
@@ -170,7 +170,7 @@ h3 {
 .anticon,
 .anticon-check {
   display: inline-flex;
-  position:absolute;
+  position: absolute;
   color: white;
   text-align: right;
 }

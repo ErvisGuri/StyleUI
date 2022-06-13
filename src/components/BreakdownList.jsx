@@ -9,39 +9,73 @@ import BreakdownContext from "../BreakdownContext";
 import FormInput from "./Form";
 
 const BreakdownList = () => {
-  const { inputValue, breakdownsValue } = React.useContext(BreakdownContext);
-  const [input] = inputValue;
+  const { inputValue, breakdownsValue, rateValue } = React.useContext(
+    BreakdownContext
+  );
+  const [input, setInput] = inputValue;
   const [breakdowns, setBreakdowns] = breakdownsValue;
+  const [rate, setRate] = rateValue;
 
   const addNewBreakdown = (e) => {
     e.preventDefault();
     setBreakdowns([
       ...breakdowns,
-      { text: input, completed: false, id: Math.random() * 1000 },
+      { text: input, completed: false, rate: rate, id: Math.random() * 1000 },
     ]);
+    setInput("");
+    setRate();
   };
-  return (
-    <div className="input1-container">
-      <div className="input-header">
-        <h3>Name</h3>
-        <h3 className="rate-header">Rate</h3>
-      </div>
-      {breakdowns.map((breakdown, i) => {
-        return <Breakdown key={i} breakdown={breakdown} />;
-      })}
 
-      <FormInput breakdown={{ text: "", rate: null }}></FormInput>
-      <div>
+  const applyChangesHandler = () => {
+    let sum = 0;
+
+    breakdowns.forEach((element) => {
+      sum += parseInt(element.rate);
+    });
+    console.log(sum);
+
+    if (sum > 100) {
+      alert("The changes were not saved. The total rate will be 100 or less.");
+    } else alert("The changes were saved");
+  };
+
+  return (
+    <>
+      <div className="input1-container">
+        <div className="input-header">
+          <h3>Name</h3>
+          <h3 className="rate-header">Rate</h3>
+        </div>
+        {breakdowns.map((breakdown, i) => {
+          return <Breakdown key={breakdown.id} breakdown={breakdown} />;
+        })}
+
+        <FormInput breakdown={{ text: "", rate: null }}></FormInput>
+        <div>
+          <Button
+            className="add-button"
+            type="primary"
+            icon={<CheckOutlined className="add-icon" />}
+            onClick={addNewBreakdown}
+          >
+            Add New Breakdown
+          </Button>
+        </div>
+      </div>
+      <div
+        className="apply-button"
+        style={{ display: "flex", marginTop: "330px", marginRight: "1px" }}
+      >
         <Button
-          className="add-button"
+          onClick={applyChangesHandler}
+          className="button"
           type="primary"
-          icon={<CheckOutlined className="add-icon" />}
-          onClick={addNewBreakdown}
+          icon={<CheckOutlined className="apply-icon" />}
         >
-          Add New Breakdown
+          APPLY CHANGES
         </Button>
       </div>
-    </div>
+    </>
   );
 };
 

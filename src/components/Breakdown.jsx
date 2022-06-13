@@ -7,15 +7,15 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input } from "antd";
 
-const Breakdown = ({ breakdown, id }) => {
+const Breakdown = ({ breakdown }) => {
   const { breakdownsValue } = React.useContext(BreakdownContext);
   const [breakdowns, setBreakdowns] = breakdownsValue;
 
   const deleteHandler = () => {
-    console.log(id);
+    console.log(breakdown.id);
     setBreakdowns(
       breakdowns.filter((el) => {
-        return el.id !== id;
+        return el.id !== breakdown.id;
       })
     );
   };
