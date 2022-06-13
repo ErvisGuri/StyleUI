@@ -8,7 +8,7 @@ import Breakdown from "./Breakdown";
 import BreakdownContext from "../BreakdownContext";
 import FormInput from "./Form";
 
-const BreakdownList = () => {
+const BreakdownList = (selectedService, changeTextHandler) => {
   const { inputValue, breakdownsValue, rateValue } = React.useContext(
     BreakdownContext
   );
@@ -49,7 +49,11 @@ const BreakdownList = () => {
         {breakdowns.map((breakdown, i) => {
           return <Breakdown key={breakdown.id} breakdown={breakdown} />;
         })}
-        <FormInput breakdown={{ text: "", rate: null }}></FormInput>
+        <FormInput
+          changeTextHandler={changeTextHandler}
+          selectedService={selectedService}
+          breakdown={{ text: "", rate: null }}
+        ></FormInput>
         <div>
           <Button
             className="add-button"

@@ -6,7 +6,7 @@ export function BreakdownProvider({ children }) {
   const [input, setInput] = useState("");
   const [breakdowns, setBreakdowns] = useState([]);
   const [rate, setRate] = useState("");
-  const [servicetext, setServiceText] = useState("")
+  const [serviceText, setServiceText] = useState()
 
   return (
     <BreakdownContext.Provider
@@ -14,7 +14,7 @@ export function BreakdownProvider({ children }) {
         inputValue: [input, setInput],
         breakdownsValue: [breakdowns, setBreakdowns],
         rateValue: [rate, setRate],
-        holderValue: [servicetext, setServiceText],
+        holderValue: [serviceText, setServiceText],
       }}
     >
       {children}

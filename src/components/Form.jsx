@@ -5,13 +5,14 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input } from "antd";
 
-const FormInput = ({ breakdown }) => {
-  const { inputValue, rateValue } = React.useContext(BreakdownContext);
-  const [input, setInput] = inputValue;
+const FormInput = () => {
+  const { rateValue, holderValue } = React.useContext(BreakdownContext);
   const [rate, setRate] = rateValue;
+  const [serviceText, setServiceText] = holderValue;
 
-  const inputTextHandler = (e) => {
-    setInput(e.target.value);
+  const serviceTextHandler = (e) => {
+    setServiceText({ serviceText: e.target.value });
+    console.log(e);
   };
   const rateInputHandler = (e) => {
     setRate(e.target.value);
@@ -21,8 +22,8 @@ const FormInput = ({ breakdown }) => {
     <>
       <div className="input">
         <Input
-          value={input}
-          onChange={inputTextHandler}
+          defaultValue={serviceText}
+          onChange={serviceTextHandler}
           className="input-ant"
           type="text"
           placeholder=" test shed 1"
