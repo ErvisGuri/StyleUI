@@ -11,7 +11,7 @@ const FormInput = () => {
   const [serviceText, setServiceText] = holderValue;
 
   const serviceTextHandler = (e) => {
-    setServiceText({ serviceText: e.target.value });
+    setServiceText(e.target.value);
     console.log(e);
   };
   const rateInputHandler = (e) => {

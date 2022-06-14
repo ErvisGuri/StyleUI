@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import BreakdownContext from "../BreakdownContext";
 
 import { Radio } from "antd";
 
 const SelectRadio = () => {
   const [selectedService, setSelectService] = useState(0);
-  //   const [selectedText, setSelectText] = useState("");
+  const { breakdownsValue } = useContext(BreakdownContext);
+  const [breakdowns, setBreakdowns] = breakdownsValue;
 
   const radioServices1 = [
     { serviceText: "service-nr-1", id: 0, serviceName: "Sidewalk Shed" },
@@ -23,7 +25,7 @@ const SelectRadio = () => {
     },
   ];
   const radioServices2 = [
-    { serviceText: "service-nr-1", id: 10, serviceName: "Window Protection" },
+    { serviceText: "service-nr-10", id: 10, serviceName: "Window Protection" },
     { serviceText: "service-nr-2", id: 11, serviceName: "Scaffold" },
     { serviceText: "service-nr-3", id: 12, serviceName: "System Scaffold" },
     { serviceText: "service-nr-4", id: 13, serviceName: "Hoist" },
@@ -37,12 +39,28 @@ const SelectRadio = () => {
 
   const onChangeValue = (e) => {
     setSelectService(e.target.value);
+    console.log(e.target.value);
   };
 
-  //   const handleChange = (e) => {
-  //     setSelectText(e.target.value);
-  //     onchange(e);
-  //   };
+  useEffect(() => {
+    let foundService = radioServices1.filter(
+      (ser) => ser.id === selectedService
+    );
+    let foundService2 = radioServices2.filter(
+      (ser) => ser.id === selectedService
+    );
+
+    console.log(breakdowns, "testtt");
+
+    if (foundService) {
+      setBreakdowns([...breakdowns, { text: foundService[0].serviceText }]);
+    } else if (foundService2) {
+      setBreakdowns([...breakdowns, { text: foundService2[0].serviceText }]);
+    } else return;
+  }, [selectedService]);
+  // const handleChange = (e) => {
+  //   setSelectText(e.target.value);
+  // };
 
   return (
     <div>

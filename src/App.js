@@ -8,7 +8,6 @@ import SelectRadio from "./components/ServiceRadio";
 
 import "./App.css";
 
-
 function App() {
   return (
     <div className="App">
@@ -20,8 +19,8 @@ function App() {
             <BreakdownList />
           </div>
         </div>
-      </BreakdownProvider >
-    </div >
+      </BreakdownProvider>
+    </div>
   );
 }
 
