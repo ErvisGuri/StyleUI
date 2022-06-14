@@ -18,23 +18,23 @@ const SelectRadio = () => {
     { serviceText: "service-nr-7", id: 6, serviceName: "Debris Chute" },
     { serviceText: "service-nr-8", id: 7, serviceName: "Turn Stiles" },
     { serviceText: "service-nr-9", id: 8, serviceName: "Hanging Scaffold" },
-    {
-      serviceTextText: "service-nr-10",
-      id: 9,
-      serviceName: "Vertical Netting",
-    },
+    { serviceText: "service-nr-10", id: 9, serviceName: "Vertical Netting" },
   ];
   const radioServices2 = [
-    { serviceText: "service-nr-10", id: 10, serviceName: "Window Protection" },
-    { serviceText: "service-nr-2", id: 11, serviceName: "Scaffold" },
-    { serviceText: "service-nr-3", id: 12, serviceName: "System Scaffold" },
-    { serviceText: "service-nr-4", id: 13, serviceName: "Hoist" },
-    { serviceText: "service-nr-5", id: 14, serviceName: "Fence" },
-    { serviceText: "service-nr-6", id: 15, serviceName: "Roof Protection" },
-    { serviceText: "service-nr-7", id: 16, serviceName: "Overhead Protection" },
-    { serviceText: "service-nr-8", id: 17, serviceName: "Needle Beam" },
-    { serviceText: "service-nr-9", id: 18, serviceName: "Horisontal Netting" },
-    { serviceText: "service-nr-10", id: 19, serviceName: "Barriers" },
+    { serviceText: "service-nr-11", id: 10, serviceName: "Window Protection" },
+    { serviceText: "service-nr-12", id: 11, serviceName: "Scaffold" },
+    { serviceText: "service-nr-13", id: 12, serviceName: "System Scaffold" },
+    { serviceText: "service-nr-14", id: 13, serviceName: "Hoist" },
+    { serviceText: "service-nr-15", id: 14, serviceName: "Fence" },
+    { serviceText: "service-nr-16", id: 15, serviceName: "Roof Protection" },
+    {
+      serviceText: "service-nr-17",
+      id: 16,
+      serviceName: "Overhead Protection",
+    },
+    { serviceText: "service-nr-18", id: 17, serviceName: "Needle Beam" },
+    { serviceText: "service-nr-19", id: 18, serviceName: "Horisontal Netting" },
+    { serviceText: "service-nr-20", id: 19, serviceName: "Barriers" },
   ];
 
   const onChangeValue = (e) => {
@@ -49,18 +49,18 @@ const SelectRadio = () => {
     let foundService2 = radioServices2.filter(
       (ser) => ser.id === selectedService
     );
-
-    console.log(breakdowns, "testtt");
-
-    if (foundService) {
-      setBreakdowns([...breakdowns, { text: foundService[0].serviceText }]);
-    } else if (foundService2) {
-      setBreakdowns([...breakdowns, { text: foundService2[0].serviceText }]);
+    if (foundService.length > 0) {
+      setBreakdowns([
+        ...breakdowns,
+        { text: foundService[0].serviceText, id: Math.random() * 1000 },
+      ]);
+    } else if (foundService2.length > 0) {
+      setBreakdowns([
+        ...breakdowns,
+        { text: foundService2[0].serviceText, id: Math.random() * 1000 },
+      ]);
     } else return;
   }, [selectedService]);
-  // const handleChange = (e) => {
-  //   setSelectText(e.target.value);
-  // };
 
   return (
     <div>

@@ -6,13 +6,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input } from "antd";
 
 const FormInput = () => {
-  const { rateValue, holderValue } = React.useContext(BreakdownContext);
+  const { rateValue, holderValue, inputValue } = React.useContext(
+    BreakdownContext
+  );
   const [rate, setRate] = rateValue;
   const [serviceText, setServiceText] = holderValue;
+  const [input, setInput] = inputValue;
 
   const serviceTextHandler = (e) => {
-    setServiceText(e.target.value);
-    console.log(e);
+    setInput(e.target.value);
   };
   const rateInputHandler = (e) => {
     setRate(e.target.value);
@@ -22,7 +24,7 @@ const FormInput = () => {
     <>
       <div className="input">
         <Input
-          defaultValue={serviceText}
+          value={input}
           onChange={serviceTextHandler}
           className="input-ant"
           type="text"

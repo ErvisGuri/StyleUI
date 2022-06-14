@@ -54,7 +54,7 @@ const BreakdownList = (selectedService, changeTextHandler, handleChange) => {
           changeTextHandler={changeTextHandler}
           selectedService={selectedService}
           breakdown={{ text: "", rate: null }}
-        ></FormInput>
+        />
         <div>
           <Button
             className="add-button"

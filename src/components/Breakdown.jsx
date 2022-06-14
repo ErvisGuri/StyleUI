@@ -12,12 +12,18 @@ const Breakdown = ({ breakdown }) => {
   const [breakdowns, setBreakdowns] = breakdownsValue;
 
   const deleteHandler = () => {
-    console.log(breakdown.id);
     setBreakdowns(
       breakdowns.filter((el) => {
         return el.id !== breakdown.id;
       })
     );
+  };
+
+  const onChangeRateHandler = (e) => {
+    let index = breakdowns.findIndex((bd) => bd.id === breakdown.id);
+    breakdowns[index].rate = e.target.value;
+    console.log(index);
+    setBreakdowns(breakdowns);
   };
 
   return (
@@ -31,10 +37,10 @@ const Breakdown = ({ breakdown }) => {
         />
         <Input
           value={breakdown.rate}
+          onChange={onChangeRateHandler}
           className="input-ant"
           type="number"
           placeholder="add rate"
-          readOnly
         />
         <div className="background-icon">
           <FontAwesomeIcon
