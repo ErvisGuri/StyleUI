@@ -22,7 +22,6 @@ const Breakdown = ({ breakdown }) => {
   const onChangeRateHandler = (e) => {
     let index = breakdowns.findIndex((bd) => bd.id === breakdown.id);
     breakdowns[index].rate = e.target.value;
-    console.log(index);
     setBreakdowns(breakdowns);
   };
 

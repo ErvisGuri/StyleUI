@@ -1,5 +1,4 @@
 import React from "react";
-import { BreakdownProvider } from "./BreakdownContext";
 
 //Importing Components
 import BreakdownList from "./components/BreakdownList";
@@ -11,16 +10,14 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <BreakdownProvider>
-        <Header />
-        <div className="card">
-          <div className="container">
-            <SelectRadio />
-            <BreakdownList />
-          </div>
+      <Header />
+      <div className="card">
+        <div className="container">
+          <SelectRadio />
+          <BreakdownList />
         </div>
-      </BreakdownProvider>
-    </div>
+      </div>
+    </div >
   );
 }
 

@@ -39,7 +39,6 @@ const SelectRadio = () => {
 
   const onChangeValue = (e) => {
     setSelectService(e.target.value);
-    console.log(e.target.value);
   };
 
   useEffect(() => {
@@ -49,6 +48,7 @@ const SelectRadio = () => {
     let foundService2 = radioServices2.filter(
       (ser) => ser.id === selectedService
     );
+
     if (foundService.length > 0) {
       setBreakdowns([
         ...breakdowns,

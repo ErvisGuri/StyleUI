@@ -8,7 +8,11 @@ import Breakdown from "./Breakdown";
 import BreakdownContext from "../BreakdownContext";
 import FormInput from "./Form";
 
-const BreakdownList = (selectedService, changeTextHandler, handleChange) => {
+const BreakdownList = ({
+  selectedService,
+  changeTextHandler,
+  handleChange,
+}) => {
   const { inputValue, breakdownsValue, rateValue } = React.useContext(
     BreakdownContext
   );
@@ -28,15 +32,15 @@ const BreakdownList = (selectedService, changeTextHandler, handleChange) => {
 
   const applyChangesHandler = () => {
     let sum = 0;
-
     breakdowns.forEach((element) => {
       sum += parseInt(element.rate);
     });
     console.log(sum);
-
     if (sum > 100) {
       alert("The changes were not saved. The total rate will be 100 or less.");
-    } else alert("The changes were saved");
+    } else if (sum <= 100) {
+      alert("The changes were saved");
+    } else return;
   };
 
   return (
@@ -47,7 +51,7 @@ const BreakdownList = (selectedService, changeTextHandler, handleChange) => {
           <h3 className="rate-header">Rate</h3>
         </div>
         {breakdowns.map((breakdown, i) => {
-          return <Breakdown key={breakdown.id} breakdown={breakdown} />;
+          return <Breakdown key={i} breakdown={breakdown} />;
         })}
         <FormInput
           handleChange={handleChange}
